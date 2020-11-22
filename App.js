@@ -28,16 +28,16 @@ import SearchScreen from './src/screens/search-screen';
         tabBarOptions: {
           activeBackgroundColor:'#DDDDDD',
           labelStyle: {
-            fontSize:15,
+            fontSize:15, 
             paddingBottom:10
           }
         },
       }
     )
   },
-   {
-     initialRouteName: 'itemFlow'
-   }
+  {
+    initialRouteName: 'itemFlow'
+  }
  );
 
  const App = createAppContainer(switcNavigator);

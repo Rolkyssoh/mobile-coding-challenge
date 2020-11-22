@@ -7,19 +7,43 @@
  */
 
 import React from 'react';
-import {StyleSheet,} from 'react-native';
-import { Text } from 'react-native-elements';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import ConnectionScreen from './src/screens/connection-screen';
+import ListScreen from './src/screens/list-sreen';
+import SearchScreen from './src/screens/search-screen';
 
-const App = () => {
-  return (
-    <>
-      <Text>Welcome</Text>
-    </>
-  );
-};
+ const switcNavigator = createSwitchNavigator(
+  {
+    connection: ConnectionScreen,
 
-const styles = StyleSheet.create({
-  
-});
+    itemFlow: createBottomTabNavigator(
+      {
+        Search: {
+          screen:SearchScreen,
+        },
+        List: ListScreen
+      },
+      {
+        tabBarOptions: {
+          activeBackgroundColor:'#DDDDDD',
+          labelStyle: {
+            fontSize:15,
+            paddingBottom:10
+          }
+        },
+      }
+    )
+  },
+   {
+     initialRouteName: 'itemFlow'
+   }
+ );
 
-export default App;
+ const App = createAppContainer(switcNavigator);
+
+ export default () => {
+   return (
+     <App />
+   )
+ }

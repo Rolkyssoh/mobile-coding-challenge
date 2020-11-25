@@ -2,11 +2,12 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
 
-const FormButton = ({title,buttonPress}) => {
+const FormButton = ({title,buttonPress, type}) => {
     return(
         <>
             <Button 
                 title={title}
+                type={type}
                 buttonStyle={styles.button}
                 titleStyle={styles.title}
                 onPress={buttonPress}

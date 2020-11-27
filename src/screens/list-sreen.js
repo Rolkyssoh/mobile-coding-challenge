@@ -4,6 +4,7 @@ import { View, StyleSheet, FlatList} from 'react-native';
 import MyHeader from '../components/My-header';
 import ReposItem from '../components/ReposItem';
 import Spinner from '../components/Spinner';
+import auth from '@react-native-firebase/auth';
 
 class ListScreen extends React.Component {
     constructor(props) {
@@ -17,6 +18,9 @@ class ListScreen extends React.Component {
 
     componentDidMount() {
         this.getRepos();
+        if(!auth().currentUser) {
+            this.props.navigation.navigate("connection")
+        }
     }
 
     componentWillUnmount() {

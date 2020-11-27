@@ -7,6 +7,8 @@ import MyHeader from '../components/My-header';
 import ReposItem from '../components/ReposItem';
 import Spinner from '../components/Spinner';
 
+import auth from '@react-native-firebase/auth';
+
 class SearchScreen extends React.Component {
     constructor(props) {
         super(props)
@@ -21,7 +23,9 @@ class SearchScreen extends React.Component {
     }
 
     componentDidMount() {
-        // this.getRepos(this.page+1);
+        if(!auth().currentUser) {
+            this.props.navigation.navigate("connection")
+        }
     }
 
     componentWillUnmount() {
@@ -93,8 +97,6 @@ class SearchScreen extends React.Component {
 
     render() {
         const { repos, searchTerm, isLoading,totalCount } = this.state;
-        // const filteredRepos = repos.filter(repo =>
-        //     repo.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
         return(
             <View style={styles.container}>
@@ -113,7 +115,6 @@ class SearchScreen extends React.Component {
                 <View style={styles.searcResult}>      
                    <View>
                         <FlatList 
-                            // data={filteredRepos}
                             data={repos}
                             keyExtractor={(item) => item.id.toString()}
                             onEndReachedThreshold={0.5}

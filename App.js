@@ -9,6 +9,7 @@
 import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import Logout from './src/components/logout';
 import ConnectionScreen from './src/screens/connection-screen';
 import ListScreen from './src/screens/list-sreen';
 import SearchScreen from './src/screens/search-screen';
@@ -22,7 +23,8 @@ import SearchScreen from './src/screens/search-screen';
         Search: {
           screen:SearchScreen,
         },
-        List: ListScreen
+        List: ListScreen,
+        Logout: Logout
       },
       {
         tabBarOptions: {
@@ -35,9 +37,9 @@ import SearchScreen from './src/screens/search-screen';
       }
     )
   },
-  {
-    initialRouteName: 'itemFlow'
-  }
+  // {
+  //   initialRouteName: 'itemFlow'
+  // }
  );
 
  const App = createAppContainer(switcNavigator);

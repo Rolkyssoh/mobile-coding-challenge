@@ -4,7 +4,7 @@ import { Input } from 'react-native-elements';
 import IconMail from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon from 'react-native-vector-icons/FontAwesome5'
 
-const FormInput = ({val, label,TextSecure, TextChange, holder}) => {
+const FormInput = ({val, label,TextSecure, TextChange, holder, correct, capitalize, iconName}) => {
     return(
         <>
              <Input 
@@ -15,13 +15,15 @@ const FormInput = ({val, label,TextSecure, TextChange, holder}) => {
                 secureTextEntry={TextSecure}
                 labelStyle={styles.label}
                 inputContainerStyle={styles.input}
-                autoCorrect={false}
-                // leftIcon={
-                //     <IconMail 
-                //         name='email-multiple'
-                //         size={20}
-                //     />
-                // }
+                autoCorrect={correct}
+                autoCapitalize={capitalize}
+                 leftIcon={
+                     <IconMail 
+                         name={iconName}
+                         color="gray"
+                         size={20}
+                     />
+                 }
             />
         </>
     )
